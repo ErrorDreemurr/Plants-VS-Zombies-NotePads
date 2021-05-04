@@ -1,0 +1,168 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Text.tres" type="Theme" id=1]
+[ext_resource path="res://Notepads.gd" type="Script" id=2]
+[ext_resource path="res://Text2.tres" type="Theme" id=3]
+[ext_resource path="res://backgroud.jpg" type="Texture" id=4]
+[ext_resource path="res://pea.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0.756863 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0.662745 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.6, 0.54902 )
+
+[node name="Notepads" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.840912
+margin_right = 0.840942
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backgroud" type="Sprite" parent="."]
+position = Vector2( 400, 299.627 )
+scale = Vector2( 2, 2.38345 )
+texture = ExtResource( 4 )
+
+[node name="pea" type="Sprite" parent="."]
+position = Vector2( 236.684, 367.586 )
+rotation = -0.811578
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+offset = Vector2( 2729.33, 643.75 )
+
+[node name="pea5" type="Sprite" parent="."]
+position = Vector2( 270, 370 )
+rotation = 0.13439
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+offset = Vector2( 2729.33, 643.75 )
+
+[node name="pea4" type="Sprite" parent="."]
+position = Vector2( 236.684, 367.586 )
+rotation = -1.75755
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+offset = Vector2( 2729.33, 643.75 )
+
+[node name="pea2" type="Sprite" parent="."]
+position = Vector2( -100.435, 267.2 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+offset = Vector2( 2729.33, 643.75 )
+
+[node name="pea3" type="Sprite" parent="."]
+position = Vector2( -100.435, 267.2 )
+rotation = 0.541052
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+offset = Vector2( 2729.33, 643.75 )
+
+[node name="Edit" type="TextEdit" parent="."]
+margin_left = 24.0
+margin_top = 25.0
+margin_right = 774.0
+margin_bottom = 600.0
+theme = ExtResource( 3 )
+custom_styles/read_only = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
+custom_styles/completion = SubResource( 4 )
+highlight_current_line = true
+show_line_numbers = true
+draw_spaces = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="File" type="MenuButton" parent="."]
+margin_left = 6.0
+margin_top = -5.0
+margin_right = 86.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 55.7655, 18.5 )
+theme = ExtResource( 1 )
+text = "文件"
+items = [ "打开", null, 0, false, false, 0, 0, null, "", false, "保存", null, 0, true, false, 1, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Help" type="MenuButton" parent="."]
+margin_left = 100.0
+margin_top = -5.0
+margin_right = 180.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 55.7655, 18.5 )
+theme = ExtResource( 1 )
+text = "帮助"
+items = [ "关于", null, 0, false, false, 0, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Open" type="FileDialog" parent="."]
+margin_left = 147.227
+margin_top = 170.999
+margin_right = 577.227
+margin_bottom = 453.999
+theme = ExtResource( 3 )
+popup_exclusive = true
+window_title = "打开单个文件"
+resizable = true
+mode = 0
+access = 2
+show_hidden_files = true
+current_dir = "/项目/Plants VS Zombies"
+current_path = "/项目/Plants VS Zombies/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save" type="FileDialog" parent="."]
+margin_left = 148.0
+margin_top = 169.0
+margin_right = 578.0
+margin_bottom = 452.0
+theme = ExtResource( 3 )
+window_title = "保存文件"
+access = 2
+show_hidden_files = true
+current_dir = "/项目/Plants VS Zombies"
+current_path = "/项目/Plants VS Zombies/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="About" type="WindowDialog" parent="."]
+margin_left = 257.236
+margin_top = 179.805
+margin_right = 523.236
+margin_bottom = 412.805
+window_title = "关于"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="About"]
+visible = false
+margin_right = 264.0
+margin_bottom = 239.0
+theme = ExtResource( 3 )
+text = "         这个其实是我无聊时想的
+		
+		
+		
+		
+		原作者:ErrorDreemurr
+		此记事本开源
+		
+		目前版本:beta 0.1.0"
+[connection signal="file_selected" from="Open" to="." method="_on_Open_file_selected"]
+[connection signal="file_selected" from="Save" to="." method="_on_Save_file_selected"]
