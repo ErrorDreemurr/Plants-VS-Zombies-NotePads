@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	OS.set_borderless_window(true)
 	$File.get_popup().connect("id_pressed",self,"_file_id_press")
 	$Help.get_popup().connect("id_pressed",self,"_help_id_press")
 
@@ -10,7 +11,9 @@ func _file_id_press(id):
 		
 	elif id == 1 :
 		$Save.popup()
-		
+	
+	elif id == 2 :
+		get_tree().quit()
 	
 
 func _help_id_press(id):
@@ -28,6 +31,10 @@ func _on_Open_file_selected(path):
 
 func _on_Save_file_selected(path):
 	var file = File.new()
-	file.open(path,File.WRITE)
+	file.open(path + ".txt",File.WRITE)
 	file.store_string($Edit.text)
 	file.close()
+
+
+func _on_Button_pressed():
+	OS.shell_open("https://github.com/ErrorDreemurr/Plants-VS-Zombies-NotePads")

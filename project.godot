@@ -17,6 +17,8 @@ _global_script_class_icons={
 
 config/name="Plants VS Zombies Notepads"
 run/main_scene="res://Notepads.tscn"
+config/icon="res://png/notepads..png"
+config/windows_native_icon="res://png/notepads..ico"
 
 [display]
 
